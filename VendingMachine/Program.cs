@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace VendingMachineController
 {
     class Program
@@ -9,22 +10,25 @@ namespace VendingMachineController
 
         static void Main(string[] args)
         {
-
             VendingMachine vendingMachine = new VendingMachine();
-           
-           vendingMachine.productList.Add(new Drink("Coke", 15, "Soda"));
-           vendingMachine.productList.Add(new Food("Tacos", 47, "Dinner"));
-           vendingMachine.productList.Add(new Toy(" Lego", 119, 6));
 
-            foreach (Product product in vendingMachine.productList)
-            {
-                Console.WriteLine(product.Name);
-            }
+            //ListOfProducts();
 
-            foreach (Product product in vendingMachine.productList)
+           vendingMachine.ListOfProducts();
+            Console.WriteLine(vendingMachine.ShowAll()); 
+            Console.WriteLine("What do you want to do? Press 1 for buying..");
+            int selection = int.Parse(Console.ReadLine());
+            
+            switch (selection)
             {
-                Console.WriteLine(product.Info());
+                case '1':
+                  vendingMachine.ShowAll(); 
+                    break;
             }
         }
+       
+        
     }
+
+    
 }

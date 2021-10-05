@@ -9,7 +9,7 @@ namespace VendingMachineController
     {
         public string Name { get; set; }
         public int Price { get; set; }
-
+        
         public Product()
         {
 
@@ -19,9 +19,10 @@ namespace VendingMachineController
         {
             Name = name;
             Price = price;
+           
         }
 
-        public virtual string Info()
+        public virtual string Examine()
         {
             return $"--- {GetType().Name} Info ---\nName: {Name}\nPrice: {Price}";
         }

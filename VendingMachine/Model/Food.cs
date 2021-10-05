@@ -14,9 +14,9 @@ namespace VendingMachineController
             TypeOfFood = typeOfFood;
         }
 
-        public override string Info()
+        public override string Examine()
         {
-            return base.Info() + $"\nType of food: {TypeOfFood}";
+            return base.Examine() + $"\nType of food: {TypeOfFood}";
         }
     }
 }

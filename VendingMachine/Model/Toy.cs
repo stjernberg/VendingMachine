@@ -14,9 +14,9 @@ namespace VendingMachineController
             RecommendedAge = recommendedAge;
         }
 
-        public override string Info()
+        public override string Examine()
         {
-            return base.Info() + $"\nRecommended age: {RecommendedAge}";
+            return base.Examine() + $"\nRecommended age: {RecommendedAge}";
         }
     }
 }
