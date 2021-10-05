@@ -7,16 +7,16 @@ namespace VendingMachineController
     class Drink : Product 
     {
         
-        public string TypeOfdrink { get; set; }
+        public string TypeOfDrink { get; set; }
 
-        public Drink(string category, int price, string typeOfDrink) : base(category, price)
+        public Drink(string name, int price, string typeOfDrink) : base(name, price)
         {
-            TypeOfdrink = typeOfDrink;
+            TypeOfDrink = typeOfDrink;
         }
 
         public override string Info()
         {
-            
+            return base.Info() + $"\nType of drink: {TypeOfDrink}";
         }
     }
 }

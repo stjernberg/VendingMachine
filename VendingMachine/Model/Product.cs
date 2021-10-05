@@ -7,15 +7,23 @@ namespace VendingMachineController
 {
     public abstract class Product
     {
-        public string Category { get; set; }
+        public string Name { get; set; }
         public int Price { get; set; }
 
-        public Product(string category, int price)
+        public Product()
         {
-            Category = category;
+
+        }
+        
+        public Product(string name, int price)
+        {
+            Name = name;
             Price = price;
         }
 
-        public abstract string Info();
+        public virtual string Info()
+        {
+            return $"--- {GetType().Name} Info ---\nName: {Name}\nPrice: {Price}";
+        }
     }
 }
