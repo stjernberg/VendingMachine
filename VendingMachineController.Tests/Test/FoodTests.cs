@@ -1,0 +1,10 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace VendingMachineController.Tests
+{
+    class FoodTests
+    {
+    }
+}
