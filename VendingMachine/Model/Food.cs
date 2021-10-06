@@ -9,14 +9,14 @@ namespace VendingMachineController
         
         public string TypeOfFood { get; set; }
 
-        public Food(string name, int price, string typeOfFood) : base(name, price)
+        public Food(int id, string name, int price, string typeOfFood) : base(id, name, price)
         {
             TypeOfFood = typeOfFood;
         }
 
         public override string Examine()
         {
-            return base.Examine() + $"\nType of food: {TypeOfFood}";
+            return base.Examine() + $"\nType of food: {TypeOfFood}\n";
         }
     }
 }

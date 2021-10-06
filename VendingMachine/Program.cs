@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+
 
 
 namespace VendingMachineController
@@ -12,9 +12,7 @@ namespace VendingMachineController
         {
             VendingMachine vendingMachine = new VendingMachine();
 
-            //ListOfProducts();
-
-           vendingMachine.ListOfProducts();
+            vendingMachine.ListOfProducts(); 
             Console.WriteLine(vendingMachine.ShowAll()); 
             Console.WriteLine("What do you want to do? Press 1 for buying..");
             int selection = int.Parse(Console.ReadLine());
@@ -22,7 +20,8 @@ namespace VendingMachineController
             switch (selection)
             {
                 case '1':
-                  vendingMachine.ShowAll(); 
+                    
+                    Console.WriteLine(vendingMachine.ShowAll());
                     break;
             }
         }
@@ -30,5 +29,4 @@ namespace VendingMachineController
         
     }
 
-    
-}
+   }

@@ -7,6 +7,7 @@ namespace VendingMachineController
 {
     public abstract class Product
     {
+        private readonly int id;
         public string Name { get; set; }
         public int Price { get; set; }
         
@@ -14,9 +15,16 @@ namespace VendingMachineController
         {
 
         }
-        
-        public Product(string name, int price)
+        public int Id
         {
+            get
+            {
+                return id;
+            }
+        }
+        public Product(int id, string name, int price)
+        {
+            this.id = id;
             Name = name;
             Price = price;
            
@@ -24,7 +32,7 @@ namespace VendingMachineController
 
         public virtual string Examine()
         {
-            return $"--- {GetType().Name} Info ---\nName: {Name}\nPrice: {Price}";
+            return $"\n---{GetType().Name.ToUpper()} ---\nId: {Id} \nName: {Name}\nPrice: {Price}";
         }
     }
 }

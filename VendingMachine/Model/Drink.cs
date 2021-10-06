@@ -13,14 +13,14 @@ namespace VendingMachineController
         {
 
         }
-        public Drink(string name, int price, string typeOfDrink) : base(name, price)
+        public Drink(int id, string name, int price, string typeOfDrink) : base(id, name, price)
         {
             TypeOfDrink = typeOfDrink;
         }
 
         public override string Examine()
         {
-            return base.Examine() + $"\nType of drink: {TypeOfDrink}";
+            return base.Examine() + $"\nType of drink: {TypeOfDrink}\n";
         }
     }
 }
