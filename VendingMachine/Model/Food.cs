@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VendingMachineController
 {
-    class Food : Product
+    public class Food : Product
     {
         
         public string TypeOfFood { get; set; }

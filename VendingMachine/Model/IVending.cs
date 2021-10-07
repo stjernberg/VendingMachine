@@ -10,7 +10,7 @@ namespace VendingMachineController
         public string ShowAll();
         public int InsertMoney(int addedMoney);
         public Dictionary<int, int> EndTransaction();
-        public string Purchase(int id);
+        public Product Purchase(int id);
 
 
     }
