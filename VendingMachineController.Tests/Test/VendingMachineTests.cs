@@ -1,13 +1,20 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+using System.Text;
+using Xunit;
+
 
 namespace VendingMachineController.Tests
 {
-    [TestClass]
-    public class UnitTest1
+    
+    public class VendingMachineTests
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Theory]
+        [InlineData(20, 25)]
+        public void TestMethod1(int price, int deposit)
         {
+            VendingMachine vending = new VendingMachine();
+
         }
     }
 }

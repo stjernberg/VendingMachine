@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 
 namespace VendingMachineController
 {
     public class VendingMachine : IVending
     {
-        readonly int[] moneyDenominations = { 1, 5, 10, 20, 50, 100, 500, 1000 };
+        private readonly int[] moneyDenominations = { 1, 5, 10, 20, 50, 100, 500, 1000 };
         public List<Product> productList = new List<Product>();
         private static int id;
+        public int deposit;
 
-
+        public int[] MoneyDenominations { get; }
         public static int Id
         {
             get
@@ -27,8 +28,8 @@ namespace VendingMachineController
 
         public static int NextProductId()
         {
-            ++id;
-            return id;
+            
+            return ++id;
         }
 
         public Dictionary<int, int> EndTransaction()
@@ -36,15 +37,10 @@ namespace VendingMachineController
             throw new NotImplementedException();
         }
 
-        public void InsertMoney(int addedMoney)
+       
+        public List<Product> ListOfProducts()
         {
-            throw new NotImplementedException();
-        }
-
-        public string ListOfProducts()
-        {
-            //VendingMachine vendingMachine = new VendingMachine();
-
+           
             productList.Add(new Drink(NextProductId(), "Coke", 15, "Soda"));
             productList.Add(new Drink(NextProductId(), "Fanta", 15, "Soda"));
             productList.Add(new Drink(NextProductId(), "Heineken", 15, "Beer"));
@@ -55,33 +51,54 @@ namespace VendingMachineController
             productList.Add(new Toy(NextProductId(), "Ball", 39, 4));
             productList.Add(new Toy(NextProductId(), "puzzle", 62, 3));
 
-            foreach (Product product in productList)
-            {
-                return product.Name;
-                //return product.Examine();
-
-            }
-            return null;
+            return productList;
 
         }
 
         
 
-        public List<Product> Purchase()
+        public string Purchase(int id)
         {
-            throw new NotImplementedException();
+            string purchaseMessage = "";
+            foreach (Product product in productList)
+            {
+                if (product.Id == id)
+                {
+                    if (deposit >= product.Price)
+                    {
+                        deposit -= product.Price;
+                        purchaseMessage += $"Here's your {product.Name}!";
+                    }
+
+                    else
+                    {
+                        purchaseMessage += "Sorry, you dont have enogh money to buy this product.";
+                    }
+                }
+            }
+            return purchaseMessage;
+
         }
 
         //public Dictionary<int, int> EndTransaction()
         //{
+        //    Dictionary<int, int> changeDictionary = new Dictionary<int, int>();
 
+        //    foreach (int  moneyType in moneyDenominations)
+        //    {
+        //        changeDictionary.Add(moneyType, )
+        //    }
         //}
 
-        //public void InsertMoney(int addedMoney)
-        //{
+        public int InsertMoney(int addedMoney)
+        {            
+            if (MoneyDenominations.Contains(addedMoney))
+            {
+                deposit += addedMoney;
+            }
 
-        //}
-
+            return deposit;
+        }
 
 
 
@@ -97,8 +114,7 @@ namespace VendingMachineController
 
             return productInfo;
 
-
-
         }
-    }
-}
+
+    }//class
+}//namespace

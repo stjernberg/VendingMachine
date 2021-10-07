@@ -8,10 +8,9 @@ namespace VendingMachineController
     interface IVending 
     {
         public string ShowAll();
-
-        public void InsertMoney(int addedMoney);
+        public int InsertMoney(int addedMoney);
         public Dictionary<int, int> EndTransaction();
-        public List<Product> Purchase();
+        public string Purchase(int id);
 
 
     }
