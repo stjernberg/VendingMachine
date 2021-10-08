@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 
 
+
 namespace VendingMachineController
 {
     public class VendingMachine : IVending
     {
-        private readonly int[] moneyDenominations = { 1, 5, 10, 20, 50, 100, 500, 1000 };
+        private readonly int[] moneyDenominations = new int[] { 1000, 500, 100, 50, 20, 10, 5 };
         public List<Product> productList = new List<Product>();
         private static int id;
         public int Deposit { get; set; }
 
-        public int[] MoneyDenominations { get; }
+        
         public static int Id
         {
             get
@@ -24,7 +25,7 @@ namespace VendingMachineController
                 id = value;
             }
         }
-
+      
 
         public static int NextProductId()
         {
@@ -55,6 +56,18 @@ namespace VendingMachineController
 
         }
 
+        public void InsertMoney(int addedMoney)
+        {
+            if (moneyDenominations.Contains(addedMoney))
+            {
+                Deposit += addedMoney;
+            }
+            else
+            {
+                Console.WriteLine("Invalid type of money, try again.");
+            }
+           
+        }
 
 
         public Product Purchase(int id)
@@ -91,44 +104,20 @@ namespace VendingMachineController
         public Dictionary<int, int> EndTransaction()
         {
 
-
-
-            int remainingMoney = Deposit;
-            Deposit = 0;
-
             Dictionary<int, int> moneyDictionary = new Dictionary<int, int>();
             foreach (int moneyType in moneyDenominations)
             {
-                moneyDictionary.Add(moneyType, remainingMoney / moneyType);
-                remainingMoney %= moneyType;
+                moneyDictionary.Add(moneyType, Deposit/moneyType);
+                Deposit %= moneyType;
             }
             return moneyDictionary;
 
-            //Dictionary<int, int> changeDictionary = new Dictionary<int, int>();
-
-            //foreach (int moneyType in moneyDenominations)
-            //{
-            //    changeDictionary.Add(moneyType, deposit / moneyType);
-            //    deposit %= moneyType;
-            //}
-
-            //return changeDictionary;
 
         }
 
-            public int InsertMoney(int addedMoney)
-            {
-                if (MoneyDenominations.Contains(addedMoney))
-                {
-                    Deposit += addedMoney;
-                }
+       
 
-                return Deposit;
-            }
-
-
-
-            public string ShowAll()
+        public string ShowAll()
             {
                 string productInfo = "";
                 productInfo += "*** Products in the vending machine ***\n";
