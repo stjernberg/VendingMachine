@@ -7,7 +7,6 @@ namespace VendingMachineController
 {
     interface IVending 
     {
-       
         public string ShowAll();
         public void InsertMoney(int addedMoney);
         public Dictionary<int, int> EndTransaction();

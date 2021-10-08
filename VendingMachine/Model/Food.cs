@@ -18,5 +18,10 @@ namespace VendingMachineController
         {
             return base.Examine() + $"\nType of food: {TypeOfFood}\n";
         }
+
+        public override string Use()
+        {
+            return ($"Here's your {Name}, enjoy your meal!");
+        }
     }
 }

@@ -18,5 +18,10 @@ namespace VendingMachineController
         {
             return base.Examine() + $"\nRecommended age: {RecommendedAge}\n";
         }
+
+        public override string Use()
+        {
+            return ($"Here's your {Name}, have fun with it!");
+        }
     }
 }

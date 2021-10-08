@@ -34,5 +34,7 @@ namespace VendingMachineController
         {
             return $"\n---{GetType().Name.ToUpper()} ---\nId: {Id} \nName: {Name}\nPrice: {Price}";
         }
+
+        public abstract string Use();
     }
 }

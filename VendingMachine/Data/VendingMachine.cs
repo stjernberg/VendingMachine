@@ -8,7 +8,7 @@ namespace VendingMachineController
 {
     public class VendingMachine : IVending
     {
-        private readonly int[] moneyDenominations = new int[] { 1000, 500, 100, 50, 20, 10, 5 };
+        private readonly int[] moneyDenominations = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
         public List<Product> productList = new List<Product>();
         private static int id;
         public int Deposit { get; set; }

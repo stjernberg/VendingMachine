@@ -80,10 +80,11 @@ namespace VendingMachineController.Test
         [Fact]
         public void EndTransaction_Test()
         {
+            
             VendingMachine vending = new VendingMachine();
-            vending.Deposit = 1170;
-
-            Dictionary<int, int> expectedValues = new Dictionary<int, int>() { { 500, 1 }, { 100, 4 }, { 50, 3 }, { 5, 4 } };
+            vending.Deposit = 2170;
+            
+            Dictionary<int, int> expectedValues = new Dictionary<int, int>() { { 1000, 1 }, { 500, 1 }, { 100, 4 }, { 50, 3 }, { 20, 0 }, { 10, 0 }, { 5, 4 }, { 1, 0 } };
            
              Assert.Equal( expectedValues, vending.EndTransaction());
         }

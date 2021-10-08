@@ -32,5 +32,7 @@ namespace VendingMachineController.Test
             Assert.Equal("Soda", drink.TypeOfDrink);
         }
 
+      
+
     }//class
 }//namespace
