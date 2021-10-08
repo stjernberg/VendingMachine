@@ -12,8 +12,7 @@ namespace VendingMachineController
         public List<Product> productList = new List<Product>();
         private static int id;
         public int Deposit { get; set; }
-
-        
+                
         public static int Id
         {
             get
