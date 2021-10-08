@@ -41,7 +41,19 @@ namespace VendingMachineController.Test
             Assert.Equal($"Here's your {toy.Name}, have fun with it!", toy.Use());
         }
 
-      
+        [Fact]
+        public void Examine_Test()
+        {
+            VendingMachine.Reset();
+            Toy toy = new Toy(VendingMachine.NextProductId(), "Car", 49, 3);
+            Food food = new Food(VendingMachine.NextProductId(), "Chips", 32, "Snacks");
+            Drink drink = new Drink(VendingMachine.NextProductId(), "Fanta", 19, "Soda");
+
+            Assert.Equal($"\n--- TOY ---\nId: 1 \nName: Car\nPrice: 49\nRecommended age: 3\n", toy.Examine());
+            Assert.Equal($"\n--- FOOD ---\nId: 2 \nName: Chips\nPrice: 32\nType of food: Snacks\n", food.Examine());
+            Assert.Equal($"\n--- DRINK ---\nId: 3 \nName: Fanta\nPrice: 19\nType of drink: Soda\n", drink.Examine());                    
+        }
+
 
     }//class
 }//namespace

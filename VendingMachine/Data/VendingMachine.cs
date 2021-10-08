@@ -12,7 +12,7 @@ namespace VendingMachineController
         public List<Product> productList = new List<Product>();
         private static int id;
         public int Deposit { get; set; }
-                
+
         public static int Id
         {
             get
@@ -24,7 +24,14 @@ namespace VendingMachineController
                 id = value;
             }
         }
-      
+
+        public int[] MoneyDenominations
+        {
+            get
+            {
+                return moneyDenominations;
+            }
+        }
 
         public static int NextProductId()
         {
@@ -33,8 +40,7 @@ namespace VendingMachineController
 
         public static void Reset()
         {
-           id = 0;
-
+            id = 0;
         }
 
 
@@ -56,7 +62,7 @@ namespace VendingMachineController
 
         public void Clear()
         {
-           productList.Clear();
+            productList.Clear();
         }
 
         public void InsertMoney(int addedMoney)
@@ -69,7 +75,6 @@ namespace VendingMachineController
             {
                 Console.WriteLine("Invalid type of money, try again.");
             }
-           
         }
 
 
@@ -90,19 +95,18 @@ namespace VendingMachineController
 
                         else
                         {
-                            Console.WriteLine( "Sorry, you dont have enogh money to buy this product.");
-        
+                            Console.WriteLine("Sorry, you dont have enogh money to buy this product.");
+
                         }
-                    }              
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Product not found"); 
-                }               
+                    Console.WriteLine("Product not found");
+                }
 
             }
             return null;
-
         }
 
         public Dictionary<int, int> EndTransaction()
@@ -110,27 +114,27 @@ namespace VendingMachineController
             Dictionary<int, int> moneyDictionary = new Dictionary<int, int>();
             foreach (int moneyType in moneyDenominations)
             {
-                moneyDictionary.Add(moneyType, Deposit/moneyType);
+                moneyDictionary.Add(moneyType, Deposit / moneyType);
                 Deposit %= moneyType;
             }
             return moneyDictionary;
         }
 
-       
+
 
         public string ShowAll()
+        {
+            string productInfo = "";
+            productInfo += "*** Products in the vending machine ***\n";
+            foreach (Product product in productList)
             {
-                string productInfo = "";
-                productInfo += "*** Products in the vending machine ***\n";
-                foreach (Product product in productList)
-                {
-                    productInfo += product.Examine();
-
-                }
-
-                return productInfo;
+                productInfo += product.Examine();
 
             }
 
-        }//class
-    }//namespace
+            return productInfo;
+
+        }
+
+    }//class
+}//namespace

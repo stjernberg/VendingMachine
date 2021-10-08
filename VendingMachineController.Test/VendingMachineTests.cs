@@ -25,6 +25,39 @@ namespace VendingMachineController.Test
         }
 
         [Fact]
+        public void Purchase_NotEnoghMoney_Test()
+        {
+            VendingMachine vending = new VendingMachine();
+
+            vending.productList.Add(new Drink(1, "Coke", 15, "Soda"));
+            vending.productList.Add(new Food(2, "Tacos", 47, "Dinner"));
+            vending.productList.Add(new Toy(3, "puzzle", 62, 4));
+            vending.Deposit = 10;
+
+
+            Assert.NotEqual(vending.productList[0], vending.Purchase(1));
+            Assert.NotEqual(vending.productList[1], vending.Purchase(2));
+            Assert.NotEqual(vending.productList[2], vending.Purchase(3));
+        }
+
+        [Fact]
+        public void Purchase_ProductDoesntExist_Test()
+        {
+            VendingMachine vending = new VendingMachine();
+
+            vending.productList.Add(new Drink(1, "Coke", 15, "Soda"));
+            vending.productList.Add(new Food(2, "Tacos", 47, "Dinner"));
+            vending.productList.Add(new Toy(3, "puzzle", 62, 4));
+            vending.Deposit = 99;
+
+            
+            vending.productList.RemoveAt(2);
+            Assert.NotEqual(vending.productList[1], vending.Purchase(3));
+            Assert.Equal(vending.productList[1], vending.Purchase(2));
+            Assert.Equal(vending.productList[0], vending.Purchase(1));          
+        }
+
+        [Fact]
         public void InsertMoney_Test()
         {
             VendingMachine vending = new VendingMachine();
@@ -34,7 +67,6 @@ namespace VendingMachineController.Test
             vending.InsertMoney(50);
             vending.InsertMoney(110);
             Assert.Equal(60, vending.Deposit);
-
         }
 
 
@@ -69,11 +101,24 @@ namespace VendingMachineController.Test
         {
             
             VendingMachine vending = new VendingMachine();
-            vending.Deposit = 2170;
             
-            Dictionary<int, int> expectedValues = new Dictionary<int, int>() { { 1000, 1 }, { 500, 1 }, { 100, 4 }, { 50, 3 }, { 20, 0 }, { 10, 0 }, { 5, 4 }, { 1, 0 } };
+            int expectedAmount = 210;
+            int actualAmount = 0;
+            vending.Deposit = 210;
+
+            Dictionary<int, int> actualValues;
+          
+            actualValues = vending.EndTransaction();
+
+            foreach (KeyValuePair<int, int> pair in actualValues)
+            {
+                actualAmount += pair.Key * pair.Value;
+            }
+
            
-             Assert.Equal( expectedValues, vending.EndTransaction());
+            Assert.Equal(expectedAmount, actualAmount);
+
+            
         }
     }
 }

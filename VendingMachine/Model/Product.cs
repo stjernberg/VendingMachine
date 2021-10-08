@@ -32,7 +32,7 @@ namespace VendingMachineController
 
         public virtual string Examine()
         {
-            return $"\n---{GetType().Name.ToUpper()} ---\nId: {Id} \nName: {Name}\nPrice: {Price}";
+            return $"\n--- {GetType().Name.ToUpper()} ---\nId: {Id} \nName: {Name}\nPrice: {Price}";
         }
 
         public abstract string Use();
