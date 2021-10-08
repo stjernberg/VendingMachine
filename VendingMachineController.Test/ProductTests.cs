@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
 
 namespace VendingMachineController.Test
 {
 
-    public class ProductTest
+    public class ProductTests
     {
         [Fact]
         public void CreateProduct_Test()
@@ -30,6 +27,18 @@ namespace VendingMachineController.Test
             Assert.Equal("Seven up", drink.Name);
             Assert.Equal(19, drink.Price);
             Assert.Equal("Soda", drink.TypeOfDrink);
+        }
+
+        [Fact]
+        public void Use_Test()
+        {
+            Toy toy = new Toy(VendingMachine.NextProductId(), "Doll", 49, 3);
+            Food food = new Food(VendingMachine.NextProductId(), "Popcorn", 32, "Snacks");
+            Drink drink = new Drink(VendingMachine.NextProductId(), "Seven up", 19, "Soda");
+
+            Assert.Equal($"Here's your {drink.Name}, enjoy your drink!", drink.Use());
+            Assert.Equal($"Here's your {food.Name}, enjoy your meal!", food.Use());
+            Assert.Equal($"Here's your {toy.Name}, have fun with it!", toy.Use());
         }
 
       

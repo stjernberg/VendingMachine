@@ -37,19 +37,6 @@ namespace VendingMachineController.Test
 
         }
 
-        //[Fact]
-        //public void NotEnoghMoney_Test()
-        //{
-        //    VendingMachine vending = new VendingMachine();
-        //    vending.deposit = 10;
-
-        //    Product product = new Drink(4, "Coke", 15, "Soda");
-        //    //vending.productList.Add(new Drink(4, "Coke", 15, "Soda"));
-        //    var exception = Assert.Throws<ArgumentException>(() =>vending.Purchase(4));
-
-
-        //    Assert.Equal("Not enough money", exception.Message);
-        //}
 
         [Fact]
         public void NextProductId_Test()

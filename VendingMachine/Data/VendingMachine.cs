@@ -40,7 +40,6 @@ namespace VendingMachineController
 
         public List<Product> ListOfProducts()
         {
-
             productList.Add(new Drink(NextProductId(), "Coke", 15, "Soda"));
             productList.Add(new Drink(NextProductId(), "Fanta", 17, "Soda"));
             productList.Add(new Drink(NextProductId(), "Heineken", 24, "Beer"));
@@ -85,19 +84,20 @@ namespace VendingMachineController
                         if (Deposit >= product.Price)
                         {
                             Deposit -= product.Price;
+                            Console.WriteLine(product.Use());
                             return product;
                         }
 
                         else
                         {
-                            throw new Exception("Sorry, you dont have enogh money to buy this product.");
+                            Console.WriteLine( "Sorry, you dont have enogh money to buy this product.");
         
                         }
                     }              
                 }
                 else
                 {
-                    throw new Exception("Product not found"); 
+                    Console.WriteLine("Product not found"); 
                 }               
 
             }
