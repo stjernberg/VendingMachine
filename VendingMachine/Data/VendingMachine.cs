@@ -55,6 +55,11 @@ namespace VendingMachineController
 
         }
 
+        public void Clear()
+        {
+           productList.Clear();
+        }
+
         public void InsertMoney(int addedMoney)
         {
             if (moneyDenominations.Contains(addedMoney))
@@ -102,7 +107,6 @@ namespace VendingMachineController
 
         public Dictionary<int, int> EndTransaction()
         {
-
             Dictionary<int, int> moneyDictionary = new Dictionary<int, int>();
             foreach (int moneyType in moneyDenominations)
             {
@@ -110,8 +114,6 @@ namespace VendingMachineController
                 Deposit %= moneyType;
             }
             return moneyDictionary;
-
-
         }
 
        

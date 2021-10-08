@@ -24,6 +24,19 @@ namespace VendingMachineController.Test
             Assert.Equal(vending.productList[2], vending.Purchase(3));
         }
 
+        [Fact]
+        public void InsertMoney_Test()
+        {
+            VendingMachine vending = new VendingMachine();
+            vending.InsertMoney(10);
+            vending.InsertMoney(15);
+            vending.InsertMoney(15);
+            vending.InsertMoney(50);
+            vending.InsertMoney(110);
+            Assert.Equal(60, vending.Deposit);
+
+        }
+
         //[Fact]
         //public void NotEnoghMoney_Test()
         //{
@@ -68,7 +81,7 @@ namespace VendingMachineController.Test
         public void EndTransaction_Test()
         {
             VendingMachine vending = new VendingMachine();
-            vending.Deposit = 1150;
+            vending.Deposit = 1170;
 
             Dictionary<int, int> expectedValues = new Dictionary<int, int>() { { 500, 1 }, { 100, 4 }, { 50, 3 }, { 5, 4 } };
            
