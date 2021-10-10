@@ -12,6 +12,5 @@ namespace VendingMachineController
         public Dictionary<int, int> EndTransaction();
         public Product Purchase(int id);
 
-
     }
 }

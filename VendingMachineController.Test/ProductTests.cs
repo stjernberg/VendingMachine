@@ -1,4 +1,5 @@
 ﻿using Xunit;
+using System.Collections.Generic;
 
 namespace VendingMachineController.Test
 {
@@ -49,6 +50,7 @@ namespace VendingMachineController.Test
             Food food = new Food(VendingMachine.NextProductId(), "Chips", 32, "Snacks");
             Drink drink = new Drink(VendingMachine.NextProductId(), "Fanta", 19, "Soda");
 
+          
             Assert.Equal($"\n--- TOY ---\nId: 1 \nName: Car\nPrice: 49\nRecommended age: 3\n", toy.Examine());
             Assert.Equal($"\n--- FOOD ---\nId: 2 \nName: Chips\nPrice: 32\nType of food: Snacks\n", food.Examine());
             Assert.Equal($"\n--- DRINK ---\nId: 3 \nName: Fanta\nPrice: 19\nType of drink: Soda\n", drink.Examine());                    

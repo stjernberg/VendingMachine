@@ -7,7 +7,6 @@ namespace VendingMachineController.Test
     public class VendingMachineTests
     {
 
-
         [Fact]
         public void Purchase_Test()
         {
@@ -17,7 +16,6 @@ namespace VendingMachineController.Test
             vending.productList.Add(new Food(2, "Tacos", 47, "Dinner"));
             vending.productList.Add(new Toy(3, "puzzle", 62, 4));
             vending.Deposit = 200;
-
 
             Assert.Equal(vending.productList[0], vending.Purchase(1));
             Assert.Equal(vending.productList[1], vending.Purchase(2));
@@ -34,7 +32,6 @@ namespace VendingMachineController.Test
             vending.productList.Add(new Toy(3, "puzzle", 62, 4));
             vending.Deposit = 10;
 
-
             Assert.NotEqual(vending.productList[0], vending.Purchase(1));
             Assert.NotEqual(vending.productList[1], vending.Purchase(2));
             Assert.NotEqual(vending.productList[2], vending.Purchase(3));
@@ -49,7 +46,6 @@ namespace VendingMachineController.Test
             vending.productList.Add(new Food(2, "Tacos", 47, "Dinner"));
             vending.productList.Add(new Toy(3, "puzzle", 62, 4));
             vending.Deposit = 99;
-
             
             vending.productList.RemoveAt(2);
             Assert.NotEqual(vending.productList[1], vending.Purchase(3));
@@ -98,8 +94,7 @@ namespace VendingMachineController.Test
 
         [Fact]
         public void EndTransaction_Test()
-        {
-            
+        {            
             VendingMachine vending = new VendingMachine();
             
             int expectedAmount = 210;
@@ -114,8 +109,7 @@ namespace VendingMachineController.Test
             {
                 actualAmount += pair.Key * pair.Value;
             }
-
-           
+                       
             Assert.Equal(expectedAmount, actualAmount);
 
             
